@@ -1,19 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'welcome-base.html' %}
 
 {% load static %}
 
 {% block head_content %}
-    <title>Welcome</title>
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/welcome.css' %}">
+    <title>Welcome</title>    
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h3>Contact App</h3>
-            </div>
-        </div>
+        <h2>Contact App</h2>
+        <h5>Store your contacts now</h5>
+
+        <button class="btn py-0 px-2 mt-1"><a href="{% url 'login' %}">Get Started</a></button>
     </div>
 {% endblock %}

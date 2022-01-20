@@ -10,3 +10,7 @@ def Welcome(request):
 def SingUp(request):
 
     return render(request, 'users/signup.html')
+
+def Login(request):
+
+    return render(request, 'users/login.html')
