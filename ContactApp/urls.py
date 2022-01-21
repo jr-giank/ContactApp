@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #Imports from django
+from unicodedata import name
 from django.contrib import admin
 from django.urls import path
 
@@ -25,4 +26,6 @@ urlpatterns = [
     path('welcome/', users.Welcome, name='welcome'),
     path('signup/', users.SingUp, name='signup'),
     path('login/', users.Login, name='login'),
+    path('logout/', users.Logout, name='logout'),
+    path('index/', users.Index, name='index')
 ]
