@@ -4,8 +4,29 @@
 
 {% block head_content %}
     <title>SignUp</title>
+
+    <style>
+        .errorlist{
+            color:white;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-    <h1 class="text-center bg-success">Hola Mundo</h1>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-9 pt-5">
+                <form method="POST" action="{% url 'signup' %}" class="py-3 px-4" style="background-color: #11141d;">
+                    {% csrf_token %}
+
+                    <h3 class="text-white text-center mb-4">SignUp</h3>
+
+                    {{ form.as_p }}
+
+                    <button class="btn col-10 offset-1 bg-success text-white mt-3">Register!</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

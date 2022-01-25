@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base_contacts.css' %}">
+    <link rel="icon" href="{% static 'img/logo.png' %}">
+    {% block head_content %}
+    {% endblock %}
+
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand">
+        <div class="container-fluid" id="navbarNav p-0">
+            <ul class="navbar-nav col-12">
+                <li class="nav-item pt-1">
+                    <img src="../../static/img/logo.png"  alt="Logo">
+                </li>
+                <li class="nav-item active ml-2"> 
+                    <a class="nav-link text-white" href="{% url 'index' %}">ContactsApp<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active offset-10">
+                    <a class="nav-link text-white" href="{% url 'logout' %}">Logout<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+    
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

@@ -20,6 +20,7 @@ from django.urls import path
 
 #Imports from local project
 from users import views as users
+from contacts import views as contacts
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -27,5 +28,5 @@ urlpatterns = [
     path('signup/', users.SingUp, name='signup'),
     path('login/', users.Login, name='login'),
     path('logout/', users.Logout, name='logout'),
-    path('index/', users.Index, name='index')
+    path('index/', contacts.Index, name='index')
 ]

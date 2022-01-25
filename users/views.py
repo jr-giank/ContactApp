@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-from users.forms import LoginForm
+from users.forms import LoginForm, SignUpForm
 
 def Welcome(request):
 
@@ -12,7 +12,16 @@ def Welcome(request):
 
 def SingUp(request):
 
-    return render(request, 'users/signup.html')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = SignUpForm()
+
+    return render(request, 'users/signup.html', {'form':form})
 
 def Login(request):
 
@@ -41,7 +50,3 @@ def Logout(request):
     logout(request)
 
     return redirect('login')
-
-def Index(request):
-
-    return render(request, 'contacts/index.html')
