@@ -28,5 +28,6 @@ urlpatterns = [
     path('signup/', users.SingUp, name='signup'),
     path('login/', users.Login, name='login'),
     path('logout/', users.Logout, name='logout'),
-    path('index/', contacts.Index, name='index')
+    path('index/', contacts.Index, name='index'),
+    path('new/contact', contacts.Add_contact, name='new_contact')
 ]

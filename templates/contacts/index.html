@@ -8,11 +8,11 @@
 
     <div class="container mt-5 bg-info">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <h3 class="text-white">Welcome</h3>
+            <div class="col-5 mt-5 mb-5" style="background-color: #11141d;">
+                <h3 class="text-white text-center mb-3 mt-5">Welcome {{ request.user.first_name }} {{ request.user.last_name }}</h3>
 
-                <button class="btn btn-success">See all contacts</button>
-                <button class="btn btn-success">Add new contact</button>
+                <button style="background-color: #2b9348;" class="btn col-4 offset-2 p-1 mb-5"><a href="" style="background-color: #2b9348;" class="page-link text-white border-0 p-0">See all contacts</a></button>
+                <button style="background-color: #1b4332;" class="btn text-white col-4 p-1 mb-5"><a href="{% url 'new_contact' %}" style="background-color: #1b4332;" class="col-12 page-link text-white border-0 p-0">Add new contact</a></button>
             </div>
         </div>
     </div>
