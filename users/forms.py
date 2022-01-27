@@ -21,7 +21,7 @@ class LoginForm(forms.Form):
 
     password = forms.CharField(
         label=False,
-        max_length=25,
+        max_length=40,
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
@@ -96,7 +96,7 @@ class SignUpForm(forms.Form):
 
     email = forms.CharField(
         label=False,
-        max_length=25,
+        max_length=40,
         widget=forms.EmailInput(
             attrs={
                 'class': 'form-control text-center',
