@@ -1,9 +1,12 @@
 #Imports de Django
+from unicodedata import name
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
 #Imports locales
 from contacts.form import NewContactForm
+from contacts.models import Contact
+#from datetime import datetime as dt
 
 # Create your views here.
 @login_required(login_url='login')
@@ -24,3 +27,54 @@ def Add_contact(request):
         form = NewContactForm()
 
     return render(request, 'contacts/new_contact.html', {'form':form})
+
+@login_required(login_url='login')
+def All_contacts(request):
+
+    contacts = Contact.objects.all()
+    
+    """contact_day = contacts.created.day
+    contact_month = contacts.created.month
+    contact_year = contacts.created.year
+
+    date = dt.now()
+    date_day = date.day
+    date_month = date.month
+    date_year = date.year
+
+    #Calculando los dias desde que se creo el usuario
+    years = contact_year - date_year
+    months = contact_month - date_month
+    days = contact_day - date_day"""
+
+    return render(request, 'contacts/all_contacts.html', {'contacts':contacts})
+
+@login_required(login_url='login')
+def Modified_contacts(request, pk):
+
+    contact = Contact.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = NewContactForm(request.POST)
+        
+        if form.is_valid():
+            contact.name = request.POST['name']
+            contact.last_name = request.POST['last_name']
+            contact.telephone_number = request.POST['telephone_number']
+            contact.save()
+            return redirect('contacts')
+    else:
+        form = NewContactForm(initial={'name':contact.name, 'last_name':contact.last_name, 'telephone_number':contact.telephone_number})
+
+
+    return render(request, 'contacts/modified_contact.html', {'form':form, 'contact':contact})
+
+@login_required(login_url='login')
+def Delete_contact(request, pk):
+
+    contact = Contact.objects.get(id=pk)
+    contact.delete()
+
+    contacts = Contact.objects.all()
+
+    return render(request, 'contacts/all_contacts.html', {'contacts':contacts})
