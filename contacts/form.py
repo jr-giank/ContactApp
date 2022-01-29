@@ -7,7 +7,6 @@ from contacts.models import Contact
 class NewContactForm(forms.Form):
     
     name = forms.CharField(
-        min_length=5,
         max_length=40,
         widget=forms.TextInput(
             attrs={
@@ -17,7 +16,6 @@ class NewContactForm(forms.Form):
     )
 
     last_name = forms.CharField(
-        min_length=2,
         max_length=40,
         widget=forms.TextInput(
             attrs={

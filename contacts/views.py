@@ -21,7 +21,12 @@ def Add_contact(request):
         form = NewContactForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            contact = Contact.objects.create()
+            contact.name = request.POST['name']
+            contact.last_name = request.POST['last_name']
+            contact.telephone_number = request.POST['telephone_number']
+            contact.user = request.user
+            contact.save()
             return redirect('index')
     else:
         form = NewContactForm()
@@ -31,21 +36,9 @@ def Add_contact(request):
 @login_required(login_url='login')
 def All_contacts(request):
 
-    contacts = Contact.objects.all()
-    
-    """contact_day = contacts.created.day
-    contact_month = contacts.created.month
-    contact_year = contacts.created.year
+    user = request.user
 
-    date = dt.now()
-    date_day = date.day
-    date_month = date.month
-    date_year = date.year
-
-    #Calculando los dias desde que se creo el usuario
-    years = contact_year - date_year
-    months = contact_month - date_month
-    days = contact_day - date_day"""
+    contacts = Contact.objects.filter(user=user)
 
     return render(request, 'contacts/all_contacts.html', {'contacts':contacts})
 
@@ -75,6 +68,7 @@ def Delete_contact(request, pk):
     contact = Contact.objects.get(id=pk)
     contact.delete()
 
-    contacts = Contact.objects.all()
+    user = request.user
+    contacts = Contact.objects.filter(user=user)
 
     return render(request, 'contacts/all_contacts.html', {'contacts':contacts})

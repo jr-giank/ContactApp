@@ -10,20 +10,26 @@
 
         <!---Esta parte va en el bucle for de python--->
         {% for contact in contacts %}
-            <div class="row bg-dark justify-content-center border py-4">
-                <div class="col-5 bg-warning border pt-3">
+            <div class="row justify-content-center py-4">
+                <div class="col-4 pt-3 back">
                     <h3 class="text-center text-white mb-1">{{contact.name}}</h3>
                     <h4 class="text-center text-white">{{contact.last_name}}</h4>
                     <p class="text-center text-white mb-2 mt-3">{{contact.telephone_number}}</p>
                     <p class="text-center text-white">{{ contact.modified.date }}</p>
                     <div class="col pl-0">
-                        <button class="btn btn-success offset-4 mb-2 p-0"><a href="{% url 'modified_contact' contact.pk %}" class="page-link border-0 bg-success text-white py-1 mx-2">Modified</a></button>
-                        <button class="btn btn-danger mb-2 p-0"><a href="{% url 'delete_contact' contact.pk %}" class="page-link border-0 bg-danger text-white py-1 mx-2">Delete</a></button>
+                        <button class="btn btn-success offset-3 mb-4 p-0"><a href="{% url 'modified_contact' contact.pk %}" class="page-link border-0 bg-success text-white py-1 mx-2">Modified</a></button>
+                        <button class="btn btn-danger mb-4 p-0"><a href="{% url 'delete_contact' contact.pk %}" class="page-link border-0 bg-danger text-white py-1 mx-2">Delete</a></button>
                     </div>
                 </div>
             </div>
         {% endfor %}
 
     </div>
+
+    <style>
+        .back{
+            background-color: #11141d;
+        }
+    </style>
 
 {% endblock %}

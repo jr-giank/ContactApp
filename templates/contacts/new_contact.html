@@ -7,14 +7,14 @@
 {% block content %}
 
     <div class="container">
-        <div class="row justify-content-center mt-5 bg-info">
-            <div class="col-4 mt-5 mb-5 bg-success">
+        <div class="row justify-content-center mt-5">
+            <div class="col-4 mt-5 mb-5 back">
                 <form method="POST" action="{% url 'new_contact' %}" class="new_contact_form mt-3 mb-4">
                     {% csrf_token %}
 
                     {{ form.as_p }}
 
-                    <button class="btn btn-block bg-info text-white col-10 offset-1">Add</button>
+                    <button class="btn btn-block text-white col-10 offset-1">Add</button>
                 </form>
             </div>
         </div>
@@ -30,6 +30,18 @@
         input[type=number]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
              margin: 0; 
+        }
+
+        .back{
+            background-color: #11141d;
+        }
+
+        .btn{
+            background-color: #2d6a4f;
+        }
+
+        .btn:hover{
+            transform: scale(1.03);
         }
     </style>
 

@@ -31,6 +31,6 @@ urlpatterns = [
     path('index/', contacts.Index, name='index'),
     path('new/contact', contacts.Add_contact, name='new_contact'),
     path('all/contacts', contacts.All_contacts, name='contacts'),
-    path('modified/contacts<int:pk>', contacts.Modified_contacts, name='modified_contact'),
+    path('modified/contacts/<int:pk>', contacts.Modified_contacts, name='modified_contact'),
     path('delete/contact/<int:pk>', contacts.Delete_contact, name='delete_contact')
 ]
