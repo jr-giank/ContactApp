@@ -43,6 +43,7 @@ In this page a user can see all the contacts stored in the applicacion.
 In this page a user can see edit the information of one of their contacts.
 
 ![edit-contact](./static/img/edit_contact.png)
+![edit-contact](./static/img/edited_contact.png)
 
 ### 8. Delete contact
 
